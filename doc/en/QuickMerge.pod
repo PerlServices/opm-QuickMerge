@@ -1,0 +1,10 @@
+=head1 NAME
+
+QuickMerge
+
+=head1 DESCRIPTION
+
+When you have to merge tickets quite often because your clients do not reply to your mails or many similar ticket that belong together are created, then this add on might be interesting to you.
+
+In the ticket overviews (e.g. status view or queue view) you can tick the checkboxes of the tickets you want to merge. When you click on the "Quick Merge" link, an AJAX call is sent to merge all tickets into the oldest selected ticket.
+
