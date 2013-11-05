@@ -65,7 +65,7 @@ sub Run {
     return 1 if !grep{ $Templatename eq $_ }@Templates;
 
     my $Snippet = qq%
-        <li class="Bulk" id="QuickMerge">
+        <li class="AlwaysPresent Bulk" id="QuickMerge">
             <script type="text/javascript">//<![CDATA[
                 function quick_merge() {
                     var challenge_token = \$('input[name="ChallengeToken"]').val();
