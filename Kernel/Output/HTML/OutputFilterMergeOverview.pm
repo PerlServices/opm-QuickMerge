@@ -1,8 +1,6 @@
 # --
 # Kernel/Output/HTML/OutputFilterMergeOverview.pm
-# Copyright (C) 2013 Perl-Services.de, http://www.perl-services.de/
-# --
-# $Id: OutputFilterMergeOverview.pm,v 1.1 2011/04/19 10:21:42 rb Exp $
+# Copyright (C) 2013-2014 Perl-Services.de, http://www.perl-services.de/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
@@ -14,11 +12,7 @@ package Kernel::Output::HTML::OutputFilterMergeOverview;
 use strict;
 use warnings;
 
-use Kernel::System::Encode;
-use Kernel::System::Time;
-
-use vars qw($VERSION);
-$VERSION = qw($Revision: 1.1 $) [1];
+our $VERSION = 0.02;
 
 sub new {
     my ( $Type, %Param ) = @_;
@@ -26,28 +20,6 @@ sub new {
     # allocate new hash for object
     my $Self = {};
     bless( $Self, $Type );
-
-    # get needed objects
-    for my $Object (
-        qw(MainObject ConfigObject LogObject LayoutObject ParamObject)
-        )
-    {
-        $Self->{$Object} = $Param{$Object} || die "Got no $Object!";
-    }
-
-    if ( $Param{EncodeObject} ) {
-        $Self->{EncodeObject} = $Param{EncodeObject};
-    }
-    else {
-        $Self->{EncodeObject} = Kernel::System::Encode->new( %{$Self} );
-    }
-
-    if ( $Param{TimeObject} ) {
-        $Self->{TimeObject} = $Param{TimeObject};
-    }
-    else {
-        $Self->{TimeObject} = Kernel::System::Time->new( %{$Self} );
-    }
 
     return $Self;
 }
@@ -64,7 +36,7 @@ sub Run {
 
     return 1 if !grep{ $Templatename eq $_ }@Templates;
 
-    my $Snippet = qq%
+    my $Snippet = qq*
         <li class="AlwaysPresent Bulk" id="QuickMerge">
             <script type="text/javascript">//<![CDATA[
                 function quick_merge() {
@@ -94,12 +66,17 @@ sub Run {
                 }
             //]]>
             </script>
-            <a href="#" onclick="quick_merge();" title="\$Text{"Merge with oldest"}">\$Text{"Quick Merge"}</a>
+            <a href="#" onclick="quick_merge();" title="[% Translate("Merge with oldest") | html %]">[% Translate("Quick Merge") | html %]</a>
         </li>
-    %;
+    *;
 
     #scan html output and generate new html input
-    ${ $Param{Data} } =~ s{(<ul \s+ class="Actions"> \s* <li .*? /li>)}{$1 $Snippet}xmgs;
+    ${ $Param{Data} } =~ s{
+        (
+            \[\% \s+ RenderBlockEnd\("DocumentActionRowItem"\) \s+ \%\]
+        )
+        \s* </ul>
+    }{$1 $Snippet </ul>}xmgs;
 
     return ${ $Param{Data} };
 }

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 <otrs_config version="1.0" init="Application">
-    <CVS>$Id: QuickMerge.xml,v 1.1.1.1 2011/04/15 07:49:58 rb Exp $</CVS>
-    <ConfigItem Name="Frontend::Output::FilterElementPost###OutputFilterMergeOverview" Required="0" Valid="1">
+    <ConfigItem Name="Frontend::Output::FilterElementPre###OutputFilterMergeOverview" Required="0" Valid="1">
         <Description Lang="en">Modul to show OuputfilterMerge in ticket overviews.</Description>
         <Description Lang="de">Modul zum Anzeigen von OuputfilterMerge in Ticketübersichten.</Description>
         <Group>QuickMerge</Group>
