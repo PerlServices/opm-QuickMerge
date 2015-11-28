@@ -1,18 +1,16 @@
 # --
-# Kernel/Output/HTML/OutputFilterMergeOverview.pm
-# Copyright (C) 2013-2014 Perl-Services.de, http://www.perl-services.de/
+# Kernel/Output/HTML/FilterElementPostMergeOverview.pm
+# Copyright (C) 2013-2015 Perl-Services.de, http://www.perl-services.de/
 # --
 # This software comes with ABSOLUTELY NO WARRANTY. For details, see
 # the enclosed file COPYING for license information (AGPL). If you
 # did not receive this file, see http://www.gnu.org/licenses/agpl.txt.
 # --
 
-package Kernel::Output::HTML::OutputFilterMergeOverview;
+package Kernel::Output::HTML::FilterElementPost::MergeOverview;
 
 use strict;
 use warnings;
-
-our $VERSION = 0.02;
 
 sub new {
     my ( $Type, %Param ) = @_;
@@ -35,6 +33,10 @@ sub Run {
     @Templates    = map{ "AgentTicketOverview$_" }(qw/Small Medium Preview/) if !@Templates;
 
     return 1 if !grep{ $Templatename eq $_ }@Templates;
+
+    my $LanguageObject = $Kernel::OM->Get('Kernel::Language');
+    my $Title          = $LanguageObject->Translate('Merge with oldest');
+    my $Link           = $LanguageObject->Translate('Quick Merge');
 
     my $Snippet = qq*
         <li class="AlwaysPresent Bulk" id="QuickMerge">
@@ -66,19 +68,19 @@ sub Run {
                 }
             //]]>
             </script>
-            <a href="#" onclick="quick_merge();" title="[% Translate("Merge with oldest") | html %]">[% Translate("Quick Merge") | html %]</a>
+            <a href="#" onclick="quick_merge();" title="$Title">$Link</a>
         </li>
     *;
 
     #scan html output and generate new html input
     ${ $Param{Data} } =~ s{
         (
-            \[\% \s+ RenderBlockEnd\("DocumentActionRowItem"\) \s+ \%\]
+            </ul> \s*
+            <!--HookEndDocumentActionRow-->
         )
-        \s* </ul>
-    }{$1 $Snippet </ul>}xmgs;
+    }{$Snippet $1}xmgs;
 
-    return ${ $Param{Data} };
+    return 1;
 }
 
 1;
