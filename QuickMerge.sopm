@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <otrs_package version="1.0">
     <Name>QuickMerge</Name>
-    <Version>5.0.1</Version>
-    <Framework>5.0.x</Framework>
+    <Version>6.0.1</Version>
+    <Framework>6.0.x</Framework>
     <Vendor>Perl-Services.de</Vendor>
     <URL>http://www.perl-services.de/</URL>
     <License>GNU AFFERO GENERAL PUBLIC LICENSE Version 3, November 2007</License>
     <Description Lang="en">A module to merge tickets more quickly.</Description>
     <Description Lang="de">Ein Modul, mit dem Tickets schneller/einfacher zusammengefasst werden können.</Description>
     <Filelist>
-        <File Permission="644" Location="Kernel/Config/Files/QuickMerge.xml"/>
+        <File Permission="644" Location="Kernel/Config/Files/XML/QuickMerge.xml"/>
         <File Permission="644" Location="Kernel/Output/HTML/FilterElementPost/MergeOverview.pm"/>
         <File Permission="644" Location="doc/en/QuickMerge.pod"/>
     </Filelist>
