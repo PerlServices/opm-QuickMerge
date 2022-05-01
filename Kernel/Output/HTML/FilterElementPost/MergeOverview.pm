@@ -46,7 +46,7 @@ sub Run {
                     var merge_url = 
                         Core.Config.Get('Baselink') +
                         "ChallengeToken=" + challenge_token + 
-                        ";Action=AgentTicketBulk;Subaction=Do;MergeToSelection=OptionMergeToOldest";
+                        ";Action=AgentTicketBulk;Subaction=Do;MergeToSelection=OptionMergeToOldest;Year=2022;Month=3;Day=2";
 
                     var has_selected = 0;
                     \$('input[name="TicketID"]:checked').each(function(){
