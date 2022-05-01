@@ -1,0 +1,38 @@
+{
+    "name": "QuickMerge",
+    "version": "6.0.3",
+    "framework": [
+        "6.0.x",
+        "6.1.x",
+        "6.2.x",
+        "6.3.x"
+    ],
+    "vendor": {
+        "name":  "Perl-Services.de",
+        "url": "https://www.perl-services.de"
+    },
+    "license": "GNU AFFERO GENERAL PUBLIC LICENSE Version 3, November 2007",
+    "description" : {
+        "en": "A module to merge tickets more quickly.",
+        "de": "Ein Modul, mit dem Tickets schneller/einfacher zusammengefasst werden können."
+    },
+    "intro": [
+        {
+            "type": "Install",
+            "version": 0,
+            "lang": "en",
+            "title": "Thank you!",
+            "text": "Thank you for choosing the QuickMerge module."
+        },
+        {
+            "type": "Install",
+            "version": 0,
+            "lang": "de",
+            "title": "Vielen Dank!",
+            "text": "Vielen Dank für die Wahl des QuickMerge Moduls."
+        }
+    ],
+    "exclude_files" : [
+        "doc/QuickMerge.json"
+    ]
+}
