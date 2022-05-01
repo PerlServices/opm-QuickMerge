@@ -1,18 +1,26 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <otrs_package version="1.0">
+    <!-- GENERATED WITH OPM::Maker::Command::sopm (1.1.0) -->
     <Name>QuickMerge</Name>
-    <Version>6.0.2</Version>
+    <Version>6.0.3</Version>
     <Framework>6.0.x</Framework>
     <Framework>6.1.x</Framework>
     <Framework>6.2.x</Framework>
+    <Framework>6.3.x</Framework>
     <Vendor>Perl-Services.de</Vendor>
-    <URL>http://www.perl-services.de/</URL>
-    <License>GNU AFFERO GENERAL PUBLIC LICENSE Version 3, November 2007</License>
-    <Description Lang="en">A module to merge tickets more quickly.</Description>
+    <URL>https://www.perl-services.de</URL>
     <Description Lang="de">Ein Modul, mit dem Tickets schneller/einfacher zusammengefasst werden können.</Description>
+    <Description Lang="en">A module to merge tickets more quickly.</Description>
+    <License>GNU AFFERO GENERAL PUBLIC LICENSE Version 3, November 2007</License>
     <Filelist>
-        <File Permission="644" Location="Kernel/Config/Files/XML/QuickMerge.xml"/>
-        <File Permission="644" Location="Kernel/Output/HTML/FilterElementPost/MergeOverview.pm"/>
-        <File Permission="644" Location="doc/en/QuickMerge.pod"/>
+        <File Permission="644" Location="Kernel/Config/Files/XML/QuickMerge.xml" />
+        <File Permission="644" Location="Kernel/Output/HTML/FilterElementPost/MergeOverview.pm" />
+        <File Permission="644" Location="doc/en/QuickMerge.pod" />
     </Filelist>
+    <IntroInstall Type="post" Lang="en" Title="Thank you!"><![CDATA[
+            Thank you for choosing the QuickMerge module.
+    ]]></IntroInstall>
+    <IntroInstall Type="post" Lang="de" Title="Vielen Dank!"><![CDATA[
+            Vielen Dank für die Wahl des QuickMerge Moduls.
+    ]]></IntroInstall>
 </otrs_package>
