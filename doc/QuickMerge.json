@@ -1,11 +1,8 @@
 {
     "name": "QuickMerge",
-    "version": "6.0.4",
+    "version": "7.0.1",
     "framework": [
-        "6.0.x",
-        "6.1.x",
-        "6.2.x",
-        "6.3.x"
+        "7.0.x"
     ],
     "vendor": {
         "name":  "Perl-Services.de",
