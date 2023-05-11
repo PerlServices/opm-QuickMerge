@@ -38,8 +38,10 @@ sub Run {
     my $Title          = $LanguageObject->Translate('Merge with oldest');
     my $Link           = $LanguageObject->Translate('Quick Merge');
 
+    my $SortByStyleSnippet='style="flex-wrap: nowrap"';
+
     my $Snippet = qq*
-        <li class="AlwaysPresent Bulk" id="QuickMerge">
+        <li class="AlwaysPresent Bulk" id="QuickMerge" style="flex-wrap: nowrap">
             <script type="text/javascript">//<![CDATA[
                 function quick_merge() {
                     var challenge_token = \$('input[name="ChallengeToken"]').val();
@@ -71,6 +73,13 @@ sub Run {
             <a href="#" onclick="quick_merge();" title="$Title">$Link</a>
         </li>
     *;
+
+    # add style to 'SortBy' dropdown
+    ${ $Param{Data} } =~ s{
+        (
+            <li\s+class="AlwaysPresent\s+SortBy"
+        )
+    }{$1 $SortByStyleSnippet}xmgs;
 
     #scan html output and generate new html input
     ${ $Param{Data} } =~ s{
